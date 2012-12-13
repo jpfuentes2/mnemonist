@@ -14,6 +14,12 @@ module.exports = function(grunt) {
       }
     },
 
+    haml: {
+      index: {
+        src: "app/views/*",
+        dest: "public/index.html"
+      }
+    },
 
     coffee: {
       compile: {
@@ -23,7 +29,6 @@ module.exports = function(grunt) {
       }
     },
 
-
     watch: {
       coffee: {
         files: ['app/assets/javascripts/*'],
@@ -32,6 +37,10 @@ module.exports = function(grunt) {
       sass: {
         files: ['app/sass/*'],
         tasks: 'sass'
+      },
+      haml: {
+        files: ['app/views/*'],
+        tasks: 'haml'
       }
     }
   });
@@ -39,6 +48,7 @@ module.exports = function(grunt) {
   // Load necessary plugins
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-haml');
 
   grunt.registerTask('default', 'sass coffee');
 
