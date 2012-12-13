@@ -18,3 +18,5 @@ _yardoc
 doc/
 
 node_modules
+components/
+.sass-cache
