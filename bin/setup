@@ -1,12 +1,39 @@
 #!/bin/bash
 
-npm install bower
+debug=false
 
-npm install grunt
-npm install grunt-contrib-sass
-npm install grunt-contrib-coffee
-npm install grunt-haml
+if [ "$1" == "debug" ]; then
+  debug=true
+fi
 
-npm install testem
+echo "Installing npm packages"
 
-bower install
+packages="bower grunt grunt-contrib-sass grunt-contrib-coffee grunt-haml testem"
+
+if $debug; then
+  npm install $packages
+else
+  npm install $packages > /dev/null 2>&1
+fi
+
+rc=$?
+if [[ $rc != 0 ]] ; then
+  echo "Failed installing npm packages ... Try again with bin/setup debug"
+  exit $rc
+fi
+
+echo "Installing JS deps via bower"
+
+bower install > /dev/null 2>&1
+
+if $debug; then
+  bower install
+else
+  bower install > /dev/null 2>&1
+fi
+
+rc=$?
+if [[ $rc != 0 ]] ; then
+  echo "Failed installing JS deps ... Try again with bin/setup debug"
+  exit $rc
+fi
