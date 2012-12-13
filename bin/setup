@@ -1,11 +1,11 @@
 #!/bin/bash
 
-npm install bower -g
+npm install bower
 
-npm install -g grunt
+npm install grunt
 npm install grunt-contrib-sass
 npm install grunt-contrib-coffee
 
-npm install testem -g
+npm install testem
 
 bower install
