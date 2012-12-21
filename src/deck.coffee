@@ -1,2 +1,7 @@
 class Deck
-  initialize: ->
+  defaults:
+    size: 52
+
+  constructor: (options) ->
+
+  shuffle: (times) ->
