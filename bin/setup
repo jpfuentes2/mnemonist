@@ -8,12 +8,10 @@ fi
 
 echo "Installing npm packages"
 
-packages="bower grunt grunt-contrib-sass grunt-contrib-coffee grunt-haml testem"
-
 if $debug; then
-  npm install $packages
+  npm install
 else
-  npm install $packages > /dev/null 2>&1
+  npm install > /dev/null 2>&1
 fi
 
 rc=$?
@@ -23,8 +21,6 @@ if [[ $rc != 0 ]] ; then
 fi
 
 echo "Installing JS deps via bower"
-
-bower install > /dev/null 2>&1
 
 if $debug; then
   bower install
