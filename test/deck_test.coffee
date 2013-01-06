@@ -15,8 +15,8 @@ describe 'Deck', ->
 
   describe "#create", ->
     it "makes N decks via :size option", ->
-      deck = new Deck size: 2
-      assert.equal 104, deck.size()
+      twoDecks = new Deck size: 2
+      assert.equal 104, twoDecks.size()
 
     it "includes all suits", ->
       suits = _.countBy deck.cards, (c) -> c.suit
@@ -24,7 +24,7 @@ describe 'Deck', ->
 
     it "includes all ranks by suit", ->
       suits = _.countBy deck.cards, (c) -> c.suit
-      assert.equal 26, ranks for suit, ranks of suits
+      assert.equal 13, ranks for suit, ranks of suits
 
   describe '#shuffle', ->
     it "returns self", ->
