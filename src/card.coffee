@@ -1,11 +1,11 @@
 class Card
   constructor: (@suit, @rank) ->
-    @value = @rank.toString()
-    @value = "0" if @value is "10"
+    @_value = @rank.toString()
+    @_value = "0" if @_value is "10"
 
   toString: ->
     suit = @suit.toLowerCase().charAt(0)
-    [suit, @value].join ""
+    [suit, @_value].join ""
 
   eql: (other) -> other.toString() is @toString()
 

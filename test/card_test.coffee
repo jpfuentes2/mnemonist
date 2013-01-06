@@ -8,11 +8,11 @@ describe 'Card', ->
 
   describe '#eql', ->
     it 'is true when the suit and value match', ->
-      other = new Card card.suit, card.value
+      other = new Card card.suit, card.rank
       assert card.eql other
 
     it 'is false when the suit or value does not match', ->
-      other = new Card card.suit, parseInt(card.value, 10) + 1
+      other = new Card card.suit, parseInt(card.rank, 10) + 1
       assert not card.eql other
 
     it 'is aliased to #is', ->
