@@ -1,6 +1,9 @@
+Card  = require '../src/card'
+_ = require 'underscore'
+
 class Deck
   defaults:
-    size: 52
+    size: 1
 
   cards: []
 
@@ -10,9 +13,16 @@ class Deck
   at: (index) -> @cards[index]
 
   shuffle: (times) ->
+    _.shuffle @cards
+    @
+
+  size: -> @cards.length
 
   _create: ->
-    for index in [1..@size]
-      @cards.push Card.new "", ""
+    decks = @defaults.size
+    for index in [1..decks]
+      for suit in Card.SUITS
+        for rank in Card.RANKS
+          @cards.push new Card suit, rank
 
 module.exports = Deck
