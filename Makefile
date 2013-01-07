@@ -17,8 +17,7 @@ watch:
 		-cw src
 
 test:
-	@./node_modules/mocha/bin/mocha \
-		test/*.coffee
+	@bin/test
 
 setup:
 	@bin/setup

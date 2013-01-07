@@ -1,0 +1,30 @@
+#!/usr/bin/env coffee
+
+path = require 'path'
+exec = require('child_process').exec
+root_dir = path.join __dirname, ".."
+test_dir = path.join root_dir, "test"
+
+options =
+  forever: false
+
+for arg in process.argv.slice 2
+  switch arg
+    when "-f" then options.forever = true
+
+mocha_exec = path.join root_dir, "node_modules", "mocha", "bin", "mocha"
+cmd = "#{mocha_exec} #{test_dir}/*.coffee"
+
+redirector = (error, stdout, stderr) ->
+  for stream, buffer of {stdout: stdout, stderr: stderr}
+    process[stream].write buffer if buffer
+  console.log "Error: #{error}" if error
+
+if options.forever
+  executor = ->
+    exec cmd, ->
+      redirector arguments...
+      setTimeout executor, 5000
+  executor()
+else
+  exec cmd, redirector
