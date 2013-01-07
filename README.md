@@ -1,3 +1,3 @@
 # Setup
 
-Install dependencies via `make setup`
+Install dependencies via `make install`

@@ -19,7 +19,7 @@ watch:
 test:
 	@bin/test
 
-setup:
+install:
 	@bin/setup
 
 .PHONY: build clean watch test
